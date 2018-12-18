@@ -1,0 +1,52 @@
+{
+  "$schema": "http://iot.bzh/download/public/schema/json/ctl-schema.json",
+  "metadata": {
+    "uid": "vshlsupport",
+    "version": "0.1",
+    "api": "vshlsupport",
+    "info": "High Level Voice Service capabilities support APIs"
+  },
+
+  "plugins": [{
+    "uid": "vshlsupport",
+    "info": "Plugin to handle high level voice service capabilities support interface implementation",
+    "libs": [
+      "vshlsupport-api.ctlso"
+    ]
+  }],
+
+
+  "controls": [{
+      "uid": "guiMetadata/publish",
+      "privileges": "urn:AGL:permission:vshlsupport:guiMetadata:public",
+      "action": "plugin://vshlsupport#guiMetadataPublish"
+    }, {
+      "uid": "guiMetadata/subscribe",
+      "privileges": "urn:AGL:permission:vshlsupport:guiMetadata:public",
+      "action": "plugin://vshlsupport#guiMetadataSubscribe"
+    }, {
+      "uid": "phonecontrol/publish",
+      "privileges": "urn:AGL:permission:vshlsupport:phonecontrol:public",
+      "action": "plugin://vshlsupport#phonecontrolPublish"
+    }, {
+      "uid": "phonecontrol/subscribe",
+      "privileges": "urn:AGL:permission:vshlsupportl:phonecontrol:public",
+      "action": "plugin://vshlsupport#phonecontrolSubscribe"
+    },  {
+      "uid": "navigation/publish",
+      "privileges": "urn:AGL:permission:vshlsupport:navigation:public",
+      "action": "plugin://vshlsupport#navigationPublish"
+    }, {
+      "uid": "navigation/subscribe",
+      "privileges": "urn:AGL:permission:vshlsupport:navigation:public",
+      "action": "plugin://vshlsupport#navigationSubscribe"
+    }, {
+      "uid": "playbackcontroller/publish",
+      "privileges": "urn:AGL:permission:vshlsupport:playbackcontroller:public",
+      "action": "plugin://vshlsupport#playbackControllerPublish"
+    }, {
+      "uid": "playbackcontroller/subscribe",
+      "privileges": "urn:AGL:permission:vshlsupport:playbackcontroller:public",
+      "action": "plugin://vshlsupport#playbackControllerSubscribe"
+    }]
+}

@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <title>VSHL API Test</title>
+    <link rel="stylesheet" href="binding.css">
+    <script type="text/javascript" src="AFB.js"></script>
+    <script type="text/javascript" src="binding.js"></script>
+</head>
+
+<body class="page-content" onload="connect()">
+
+    <h1>Voice Service High Level Support API Tester</h1>
+
+    <button id="connected" onclick="init()">Binder WS Fail</button>
+    <button id="monitoring" onclick="window.open('/monitoring/monitor.html','_monitor_ctl')">Debug/Monitoring</a>
+    </button>
+    <button onclick="clearPre('question'); clearPre('output'); clearPre('outevt');">Clear</button> <br><br>
+    VSHL SUPPORT URL: <input type="text" id="vshl-support-address" value="192.168.1.42:31031" onchange="connectVshlSupport()">
+    <br>
+    <br>
+
+    <div>
+        <P>Phone Control UI</p>
+        <button onclick="triggerCallStateChangedAction('ACTIVE')">Accept</button>
+        <button onclick="triggerCallStateChangedAction('IDLE')">Reject</button>
+    </div>
+
+    <div>
+        <p>Playback Controller UI</p>
+        <button onclick="triggerButtonPressedAction('play')">play</button>
+        <button onclick="triggerButtonPressedAction('pause')">pause</button>
+        <button onclick="triggerButtonPressedAction('next')">next</button>
+        <button onclick="triggerButtonPressedAction('previous')">previous</button>
+        <button onclick="triggerButtonPressedAction('skip-forward')">skip-forward</button>
+        <button onclick="triggerButtonPressedAction('skip-backward')">skip-backward</button>
+    </div>
+
+    <dialog id="templateui-event-chooser">
+        <h3 class="dialogheader">Subscribe to the following GUI Metadata Messages</h3>
+        <div>
+            <ol>
+                <li>
+                    <input type="checkbox" id="render_template" checked>
+                    <label>render_template</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="clear_template" checked>
+                    <label>clear_template</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="render_player_info" checked>
+                    <label>render_player_info</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="clear_player_info" checked>
+                    <label>clear_player_info</label>
+                </li>
+            </ol>
+        </div>
+        <footer>
+            <button id="templateui-subscribe-btn" type="button" style="margin: 10px">Subscribe</button>
+        </footer>
+    </dialog>
+
+    <dialog id="phonecontrol-event-chooser">
+        <h3 class="dialogheader">Subscribe to the following phone control messages</h3>
+        <div>
+            <ol>
+                <li>
+                    <input type="checkbox" id="phonecontrol-dial" checked>
+                    <label>phonecontrol/dial</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="phonecontrol-redial" checked>
+                    <label>phonecontrol/redial</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="phonecontrol-answer" checked>
+                    <label>phonecontrol/answer</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="phonecontrol-stop" checked>
+                    <label>phonecontrol/stop</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="phonecontrol-send_dtmf" checked>
+                    <label>phonecontrol/send_dtmf</label>
+                </li>
+            </ol>
+        </div>
+        <footer>
+            <button id="phonecontrol-subscribe-btn" type="button" style="margin: 10px">Subscribe</button>
+        </footer>
+    </dialog>
+
+    <dialog id="navigation-event-chooser">
+        <h3 class="dialogheader">Subscribe to the following navigation messages</h3>
+        <div>
+            <ol>
+                <li>
+                    <input type="checkbox" id="set_destination" checked>
+                    <label>set_destination</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="cancel_navigation" checked>
+                    <label>cancel_navigation</label>
+                </li>
+            </ol>
+        </div>
+        <footer>
+            <button id="navigation-subscribe-btn" type="button" style="margin: 10px">Subscribe</button>
+        </footer>
+    </dialog>
+
+    <div id="top" class="row">
+    <div id='actions' class="col1">
+        <div>
+          <h2>VSHL SUPPORT APIs</h2>
+          <p>APIs that are voiceagent agnostic</p>
+          <button onclick="showTemplateUIEventChooserDialog();">Subscribe to GUI Metadata</button>
+          <button onclick="showPhoneControlEventChooserDialog();">Subscribe to Phonecontrol messages</button>
+          <button onclick="showNavigationEventCHooserDialod();">Subscribe to Navigation messages</button>          
+        </div>
+
+        <div id="agentsDiv">
+        </div>
+    </div>
+
+    <div id="main" style="visibility:hidden" class="col2">
+        <ol>
+            <li>Question <pre id="question"></pre>
+            <li>Response <pre id="output"></pre>
+            <li>Events: <pre id="outevt"></pre>
+        </ol>
+    </div>
+    </div>
+
+</body>
