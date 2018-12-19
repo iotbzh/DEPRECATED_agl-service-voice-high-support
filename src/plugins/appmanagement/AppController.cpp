@@ -22,7 +22,7 @@ static string START_APP_VERB = "once";
 
 // Display an application
 static string DISPLAY_APP_API = "homescreen";
-static string DISPLAY_APP_VERB = "tap_shortcut";
+static string DISPLAY_APP_VERB = "showWindow";
 
 using Level = vshl::common::interfaces::ILogger::Level;
 
@@ -81,7 +81,11 @@ bool AppController::displayApp(const string& name, const string& version) {
     // Arguments to Pass
     json_object* argsJ = json_object_new_object();
     json_object* applicationNameJ = json_object_new_string(appToDisplay.c_str());
-    json_object_object_add(argsJ,"application_name", applicationNameJ);
+    json_object_object_add(argsJ,"application_id", applicationNameJ);
+    json_object* applicationParameterJ = json_object_new_object();
+    json_object_object_add(argsJ,"parameter", applicationParameterJ);
+    json_object* parameterArea = json_object_new_string("normal");
+    json_object_object_add(applicationParameterJ,"area", parameterArea);
 
     int err = mAfbApi->callSync(DISPLAY_APP_API, DISPLAY_APP_VERB, argsJ, &object, error, info);
     if (object) {
