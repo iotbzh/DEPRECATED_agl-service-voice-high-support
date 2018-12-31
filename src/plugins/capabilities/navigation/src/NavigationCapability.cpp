@@ -16,7 +16,7 @@
 #include "capabilities/navigation/include/NavigationMessages.h"
 
 const string TAG = "vshl::capabilities::navigation";
-const string APP_NAME = "icsalexaapp";
+const string APP_NAME = "ics-alexa-app";
 const string VERSION_NAME = "0.1";
 
 using Level = vshl::common::interfaces::ILogger::Level;

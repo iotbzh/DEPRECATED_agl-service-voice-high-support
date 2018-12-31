@@ -16,7 +16,7 @@
 #include "capabilities/guimetadata/include/GuiMetadataMessages.h"
 
 const string TAG = "vshl::capabilities::guimetadata";
-const string APP_NAME = "icsalexaapp";
+const string APP_NAME = "ics-alexa-app";
 const string VERSION_NAME = "0.1";
 
 using Level = vshl::common::interfaces::ILogger::Level;
